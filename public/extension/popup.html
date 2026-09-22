@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SpeakX</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
+        <path
+          fill="currentColor"
+          d="M7 13.2h3.4l5.6-4.4v14.4L10.4 18.8H7A1.2 1.2 0 0 1 5.8 17.6v-3.2A1.2 1.2 0 0 1 7 13.2Z"
+        />
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+          d="M20.2 11.4a4.4 4.4 0 0 1 0 9.2"
+        />
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+          opacity="0.7"
+          d="M23.4 8.6a8 8 0 0 1 0 14.8"
+        />
+      </svg>
+      <div>
+        <strong>SpeakX</strong>
+        <p>Text to speech on X</p>
+      </div>
+    </header>
+
+    <label class="row">
+      <span>Enabled on X</span>
+      <input id="enabled" type="checkbox" />
+    </label>
+
+    <label class="stack">
+      <span>Voice</span>
+      <select id="voiceURI"></select>
+    </label>
+
+    <label class="stack">
+      <span class="split"><span>Rate</span><em id="rateVal">1.00×</em></span>
+      <input id="rate" type="range" min="0.7" max="1.6" step="0.02" />
+    </label>
+
+    <label class="stack">
+      <span class="split"><span>Pitch</span><em id="pitchVal">1.00</em></span>
+      <input id="pitch" type="range" min="0.8" max="1.3" step="0.02" />
+    </label>
+
+    <label class="row"><span>Say the author’s name</span><input id="announceAuthor" type="checkbox" /></label>
+    <label class="row"><span>Auto-advance</span><input id="autoAdvance" type="checkbox" /></label>
+    <label class="row"><span>Read threads on status pages</span><input id="readThread" type="checkbox" /></label>
+    <label class="row"><span>Include quoted posts</span><input id="includeQuote" type="checkbox" /></label>
+    <label class="row"><span>Skip URLs</span><input id="skipUrls" type="checkbox" /></label>
+
+    <div class="actions">
+      <button id="stop" type="button">Stop</button>
+      <button id="speak" type="button" class="primary">Speak current</button>
+    </div>
+
+    <p class="hint">Alt+S speaks the post in view. Alt+Shift+S stops. Right-click selected text to speak it.</p>
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,163 @@
+.speakx-action {
+  display: inline-flex;
+  flex: 1 1 0;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.speakx-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: rgb(113, 118, 123);
+  cursor: pointer;
+}
+
+.speakx-btn:hover,
+.speakx-btn:focus-visible {
+  background: rgba(142, 180, 212, 0.12);
+  color: rgb(142, 180, 212);
+  outline: none;
+}
+
+.speakx-btn.is-active {
+  color: rgb(142, 180, 212);
+}
+
+#speakx-player {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2147483000;
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  color: #f4f1ea;
+}
+
+#speakx-player[hidden] {
+  display: none !important;
+}
+
+.speakx-player-inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+  background: #121214;
+  border: 1px solid #232328;
+  border-bottom: 0;
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 -12px 40px rgb(0 0 0 / 0.45);
+}
+
+.speakx-player-copy {
+  min-width: 0;
+  flex: 1;
+}
+
+.speakx-player-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.speakx-player-sub {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 11px;
+  color: #8a8a93;
+}
+
+.speakx-player-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.speakx-pbtn {
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid #232328;
+  border-radius: 999px;
+  background: transparent;
+  color: #f4f1ea;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.speakx-pbtn:hover {
+  background: #1a1a1e;
+}
+
+.speakx-eq {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 14px;
+  color: #8eb4d4;
+}
+
+.speakx-eq i {
+  display: block;
+  width: 2.5px;
+  height: 8px;
+  border-radius: 99px;
+  background: currentColor;
+  transform-origin: center bottom;
+}
+
+#speakx-player.is-playing .speakx-eq i {
+  animation: speakx-eq 900ms ease-in-out infinite;
+}
+
+#speakx-player.is-playing .speakx-eq i:nth-child(2) {
+  animation-duration: 760ms;
+  animation-delay: 120ms;
+  height: 14px;
+}
+
+#speakx-player.is-playing .speakx-eq i:nth-child(3) {
+  animation-duration: 1040ms;
+  animation-delay: 240ms;
+  height: 14px;
+}
+
+#speakx-player.is-playing .speakx-eq i:nth-child(4) {
+  animation-duration: 840ms;
+  animation-delay: 80ms;
+}
+
+@keyframes speakx-eq {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@media (max-width: 688px) {
+  .speakx-player-inner {
+    max-width: none;
+    border-radius: 0;
+    margin-bottom: 52px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #speakx-player.is-playing .speakx-eq i {
+    animation: none;
+  }
+}

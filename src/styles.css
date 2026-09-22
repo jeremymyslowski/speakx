@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #09090b;
+  --color-foreground: #f4f1ea;
+  --color-muted: #18181c;
+  --color-muted-foreground: #8a8a93;
+  --color-card: #121214;
+  --color-card-foreground: #f4f1ea;
+  --color-popover: #121214;
+  --color-popover-foreground: #f4f1ea;
+  --color-primary: #c8ccd4;
+  --color-primary-foreground: #09090b;
+  --color-secondary: #1a1a1e;
+  --color-secondary-foreground: #f4f1ea;
+  --color-accent: #8eb4d4;
+  --color-accent-foreground: #09090b;
+  --color-destructive: #c45c4a;
+  --color-destructive-foreground: #f4f1ea;
+  --color-border: #232328;
+  --color-input: #232328;
+  --color-ring: #c8ccd4;
+  --color-steel: #8eb4d4;
+  --color-paper: #f4f1ea;
+  --color-ink: #09090b;
+
+  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Instrument Serif", ui-serif, Georgia, "Times New Roman", serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius: 12px;
+
+  --shadow-dock: 0 -12px 40px rgb(0 0 0 / 0.45);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  body {
+    min-height: 100dvh;
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-accent) 40%, transparent);
+    color: var(--color-foreground);
+  }
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+}
+
+@keyframes speakx-eq {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes speakx-pulse-ring {
+  0% {
+    opacity: 0.55;
+    transform: scale(0.92);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.18);
+  }
+}
+
+.eq-bar {
+  transform-origin: center bottom;
+  animation: speakx-eq 900ms ease-in-out infinite;
+}
+
+.eq-bar:nth-child(2) {
+  animation-delay: 120ms;
+  animation-duration: 760ms;
+}
+
+.eq-bar:nth-child(3) {
+  animation-delay: 240ms;
+  animation-duration: 1040ms;
+}
+
+.eq-bar:nth-child(4) {
+  animation-delay: 80ms;
+  animation-duration: 840ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eq-bar,
+  .speakx-ring {
+    animation: none;
+  }
+}
